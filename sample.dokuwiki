@@ -1,28 +1,18 @@
 === This is sample DokuWiki file for translation ===
 
 ** Testing of bold text which is long ** and here is // italic // also for parsing.
-Next, we are testing ** // combined text ** that part is italic // and part is bolded.
-Also __underlined__ text is tested.
-** Multiple lines
-of bold text and * which is incorrect **
+Next, we are testing //**  combined text ** that part is italic // and part is strong.
+Also __ underlined __ text is tested.
 
-== Second test ==
+== Second heading test ==
 
-We are testing <sub> text </sub> wchich is in sub.
-<del> Text which is <del> deleted </del>
+  * list item 1
+  * list item 2
+  * end of the list
 
-  * This is a list
-  * The second item
-    * You may have different levels
-  * Another item
+  * Second list
 
-  - The same list but ordered
-  - Another item
-    - Just use indention for deeper levels
-  - That's it
+We are testing <sub> text </sub> which is in sub.
+<del> Text which is  deleted </del>
 
-
-^ Heading 1      ^ Heading 2       ^ Heading 3          ^
-| Row 1 Col 1    | Row 1 Col 2     | Row 1 Col 3        |
-| Row 2 Col 1    | some colspan (note the double pipe) ||
-| Row 3 Col 1    | Row 3 Col 2     | Row 3 Col 3        |
+[[www.google.com|This Link points to google]]

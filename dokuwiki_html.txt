@@ -42,6 +42,6 @@ This is some text with some linebreaks\\ Note that the
 two backslashes are only recognized at the end of a line\\
 or followed by\\ a whitespace \\this happens without it.
 
-[[http://www.google.com|This Link points to google]].
+[[http://www.google.com|This Link points to google]]
 
 [[http://php.net|{{wiki:dokuwiki-128.png}}]]
