@@ -17,6 +17,8 @@ class Parser:
         'STRONG',
         'UNDERLINE',
         'ITALIC',
+        'IMG_BEGIN',
+        'IMG_END',
         'LINK_BEGIN',
         'LINK_END',
         'LINK_SEPARATOR',
@@ -42,6 +44,14 @@ class Parser:
 
     def t_UNDERLINE(self, t):
         r'__'
+        return t
+
+    def t_IMG_BEGIN(self, t):
+        r'\{\{'
+        return t
+
+    def t_IMG_END(self, t):
+        r'\}\}'
         return t
 
     def t_LINK_BEGIN(self, t):
@@ -89,7 +99,7 @@ class Parser:
         return t
 
     def t_TEXT(self, t):
-        r'[^]%<_\/\*\|\[@=\n\#\^~\-]+'
+        r'[^]%<_\*\|\[@=\n\}\#\^~\-]+'
         return t
 
     def t_error(self, t):
@@ -128,6 +138,10 @@ class Parser:
     def p_link(self, p):
         '''block : LINK_BEGIN TEXT LINK_SEPARATOR TEXT LINK_END'''
         p[0] = Node().LinkNode(p[2], p[4])
+
+    def p_img(self, p):
+        '''block : IMG_BEGIN TEXT IMG_END'''
+        p[0] = Node().ImgNode(p[2])
 
     def p_strong(self, p):
         '''block : STRONG block STRONG'''
@@ -193,6 +207,9 @@ class Node:
     def LinkNode(self, value, text):
         return '<a href="{}">{}</a>'.format(value, text)
 
+    def ImgNode(self, value):
+        return '<img src="{}"></img>'.format(value)
+
     def StrongNode(self, value):
         return '<strong> {} </strong>'.format(value)
 
@@ -225,5 +242,6 @@ class Node:
 
 
 fh = open('sample.dokuwiki', "r")
+# Parser().read(fh)
 output = Parser().yacc.parse(fh.read(), debug=False, tracking=True)
 print(output)
