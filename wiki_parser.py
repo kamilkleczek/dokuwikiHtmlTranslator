@@ -119,10 +119,6 @@ class Parser:
         '''markdown : markdown block'''
         p[0] = p[1] + p[2]
 
-    def p_block_markdown(self, p):
-        '''markdown : block markdown'''
-        p[0] = p[1] + p[2]
-
     def p_text(self, p):
         '''block : TEXT'''
         p[0] = Node().TextNode(value=p[1])
@@ -180,8 +176,7 @@ class Parser:
         p[0] = Node().ListItem(p[2])
 
     def p_LISTBLOCK(self, p):
-        '''listblocks : listblock listblock
-                        | listblocks listblock
+        '''listblocks : listblocks listblock
                         | listblock'''
         if len(p) > 2:
             p[0] = p[1] + p[2]
